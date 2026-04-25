@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('registration_number')->unique();
             $table->string('model');
-            $table->unsignedInteger('price');
+            $table->unsignedInteger('seats');
         });
     }
 

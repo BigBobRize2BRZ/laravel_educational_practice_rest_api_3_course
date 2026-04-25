@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\RouteResource;
+use App\Models\Route;
 use Illuminate\Http\Request;
 
 class RouteController extends Controller
@@ -12,7 +14,7 @@ class RouteController extends Controller
      */
     public function index()
     {
-        //
+        return RouteResource::collection(Route::all());
     }
 
     /**
@@ -26,9 +28,9 @@ class RouteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Route $route)
     {
-        //
+        return new RouteResource($route);
     }
 
     /**

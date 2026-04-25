@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
+use App\Http\Resources\BusResource;
+use App\Models\Bus;
 use Illuminate\Http\Request;
 
 class BusController extends Controller
@@ -12,7 +14,7 @@ class BusController extends Controller
      */
     public function index()
     {
-        //
+        return BusResource::collection(Bus::all());
     }
 
     /**
@@ -26,9 +28,9 @@ class BusController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Bus $bus)
     {
-        //
+        return new BusResource($bus);
     }
 
     /**

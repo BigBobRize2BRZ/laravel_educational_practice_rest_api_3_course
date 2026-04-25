@@ -14,11 +14,11 @@ class Trip extends Model
 
     public function bus(): BelongsTo
     {
-        return $this->BelongsTo(Bus::class);
+        return $this->belongsTo(Bus::class);
     }
 
     public function route(): BelongsTo
     {
-        return $this->BelongsTo(Route::class);
+        return $this->belongsTo(Route::class);
     }
 }

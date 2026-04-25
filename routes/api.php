@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BusController;
+use App\Http\Controllers\Api\RouteController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Models\Route as RouteModel;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,7 +25,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::middleware(['throttle:api'])->group(function () {
     Route::post('register', [AuthController::class, 'register']);
     Route::post('login', [AuthController::class, 'login']);
-    Route::get('bus', [BusController::class, 'login']);
+
+    Route::get('bus', [BusController::class, 'index']);
+    Route::get('bus/{bus}', [BusController::class, 'show']);
+
+    Route::apiResource('routes', RouteController::class);
+    Route::get('routes/{id}', [RouteController::class, 'show']);
 });
 
 Route::middleware(['throttle:api', 'check.token', 'auth:sanctum',])->group(function () {
