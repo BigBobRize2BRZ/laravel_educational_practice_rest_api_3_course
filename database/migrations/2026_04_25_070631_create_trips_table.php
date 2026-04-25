@@ -18,6 +18,7 @@ return new class extends Migration
             $table->dateTime('arrival_date');
             $table->foreignId('bus_id')->constrained()->onDelete('cascade');
             $table->foreignId('route_id')->constrained()->onDelete('cascade');
+            $table->timestamps();
         });
     }
 

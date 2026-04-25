@@ -17,7 +17,10 @@ class RouteFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'number_route' => fake()->unique()->numberBetween(100, 999),
+            'start_stop' => fake()->streetName(),
+            'end_stop' => fake()->streetName(),
+            'price' => fake()->numberBetween(500, 5000),
         ];
     }
 }

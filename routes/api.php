@@ -29,8 +29,8 @@ Route::middleware(['throttle:api'])->group(function () {
     Route::get('bus', [BusController::class, 'index']);
     Route::get('bus/{bus}', [BusController::class, 'show']);
 
-    Route::apiResource('routes', RouteController::class);
-    Route::get('routes/{id}', [RouteController::class, 'show']);
+    Route::get('route', [RouteController::class, 'index']);
+    Route::get('route/{route}', [RouteController::class, 'show']);
 });
 
 Route::middleware(['throttle:api', 'check.token', 'auth:sanctum',])->group(function () {

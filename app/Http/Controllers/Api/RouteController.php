@@ -14,7 +14,8 @@ class RouteController extends Controller
      */
     public function index()
     {
-        return RouteResource::collection(Route::all());
+        $routes = Route::with('trips')->get();
+        return RouteResource::collection($routes);
     }
 
     /**
@@ -30,6 +31,7 @@ class RouteController extends Controller
      */
     public function show(Route $route)
     {
+        $route->load('trips');
         return new RouteResource($route);
     }
 

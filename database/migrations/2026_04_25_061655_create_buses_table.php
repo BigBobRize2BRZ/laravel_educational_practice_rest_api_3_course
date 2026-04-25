@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('registration_number')->unique();
             $table->string('model');
             $table->unsignedInteger('seats');
+            $table->timestamps();
         });
     }
 

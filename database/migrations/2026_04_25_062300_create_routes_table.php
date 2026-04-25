@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('start_stop');
             $table->string('end_stop');
             $table->unsignedInteger('price');
+            $table->timestamps();
         });
     }
 
