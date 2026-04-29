@@ -15,10 +15,11 @@ class TripResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'number_trip'    => $this->number_trip,
+            'number_trip' => $this->number_trip,
             'departure_date' => $this->departure_date,  
-            'arrival_date'   => $this->arrival_date,    
-            'bus_id'         => $this->bus_id,
+            'arrival_date' => $this->arrival_date,    
+            'bus_id' => $this->bus_id,
+            'route_id' => $this->route_id,
         ];
     }
 }

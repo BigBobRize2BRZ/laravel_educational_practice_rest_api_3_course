@@ -24,7 +24,8 @@ class Kernel extends HttpKernel
     ];
 
     protected $routeMiddleware = [
-        'check.token' => \App\Http\Middleware\CheckBearerToken::class,
+        'check.token' => \App\Http\Middleware\CustomMiddlewares\CheckBearerToken::class,
+        'role'        => \App\Http\Middleware\CustomMiddlewares\CheckRole::class,
     ];
 
     /**

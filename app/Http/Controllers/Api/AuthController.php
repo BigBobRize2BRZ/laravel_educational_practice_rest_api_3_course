@@ -8,13 +8,17 @@ use App\Http\Requests\StoreUserRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
 
     public function register(StoreUserRequest $request)
     {
-        return User::query()->create($request->all());
+        $data = $request->validated();
+        $data['password'] = Hash::make($data['password']);
+        $data['status'] = $data['status'] ?? 'user';
+        return User::create($data);
     }
 
     public function login(LoginUserRequest $request)
@@ -35,7 +39,15 @@ class AuthController extends Controller
 
     public function logout(Request $request)
     {
-        $request->user()->currentAccessToken()->delete();
+        $user = $request->user();
+        if (!$user) {
+            return response()->json(['message' => 'Not authenticated'], 401);
+        }
+
+        $token = $user->currentAccessToken();
+        if ($token) {
+            $token->delete();
+        }
 
         return response()->json(['message' => 'Logged out successfully']);
     }
