@@ -22,10 +22,10 @@ class BusUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|exists:buses,id',
-            'registration_number' => 'sometimes|string|max:20|unique:buses,registration_number,' . $this->id,
-            'model' => 'sometimes|string|max:255',
-            'seats' => 'sometimes|integer|min:1',
+            'id' => ['required', 'exists:buses,id'],
+            'registration_number' => ['sometimes', 'string', 'max:20', 'unique:buses,registration_number,' . $this->id],
+            'model' => ['sometimes', 'string', 'max:255'],
+            'seats' => ['sometimes', 'integer', 'min:1'],
         ];
     }
 }

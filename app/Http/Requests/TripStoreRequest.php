@@ -22,11 +22,11 @@ class TripStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'number_trip' => 'required|string|max:50|unique:trips',
-            'departure_date' => 'required|date',
-            'arrival_date' => 'required|date|after:departure_date',
-            'bus_id' => 'required|exists:buses,id',
-            'route_id' => 'required|exists:routes,id',
+            'number_trip' => ['required', 'string', 'max:50', 'unique:trips'],
+            'departure_date' => ['required', 'date'],
+            'arrival_date' => ['required', 'date', 'after:departure_date'],
+            'bus_id' => ['required', 'exists:buses,id'],
+            'route_id' => ['required', 'exists:routes,id'],
         ];
     }
 }

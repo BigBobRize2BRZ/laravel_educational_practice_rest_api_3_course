@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class RouteStoreRequest extends FormRequest
+class PasswordChangeRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -22,10 +22,9 @@ class RouteStoreRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'number_route' => ['required', 'integer', 'unique:routes'],
-            'start_stop' => ['required', 'string', 'max:255'],
-            'end_stop' => ['required', 'string', 'max:255'],
-            'price' => ['required', 'integer', 'min:0'],
+            'user_id' => ['required', 'exists:users,id'],
+            'password' => ['required', 'string', 'min:6'],
+            'old_password' => ['sometimes', 'string'],
         ];
     }
 }

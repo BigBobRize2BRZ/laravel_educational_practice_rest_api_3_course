@@ -22,11 +22,11 @@ class RouteUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|exists:routes,id',
-            'number_route' => 'sometimes|integer|unique:routes,number_route,' . $this->id,
-            'start_stop' => 'sometimes|string|max:255',
-            'end_stop' => 'sometimes|string|max:255',
-            'price' => 'sometimes|integer|min:0',
+            'id' => ['required', 'exists:routes,id'],
+            'number_route' => ['sometimes', 'integer', 'unique:routes,number_route,' . $this->id],
+            'start_stop' => ['sometimes', 'string', 'max:255'],
+            'end_stop' => ['sometimes', 'string', 'max:255'],
+            'price' => ['sometimes', 'integer', 'min:0'],
         ];
     }
 }

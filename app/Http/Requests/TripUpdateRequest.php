@@ -22,12 +22,12 @@ class TripUpdateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'id' => 'required|exists:trips,id',
-            'number_trip' => 'sometimes|string|max:50|unique:trips,number_trip,' . $this->id,
-            'departure_date' => 'sometimes|date',
-            'arrival_date' => 'sometimes|date|after:departure_date',
-            'bus_id' => 'sometimes|exists:buses,id',
-            'route_id' => 'sometimes|exists:routes,id',
+            'id' => ['required', 'exists:trips,id'],
+            'number_trip' => ['sometimes', 'string', 'max:50', 'unique:trips,number_trip,' . $this->id],
+            'departure_date' => ['sometimes', 'date'],
+            'arrival_date' => ['sometimes', 'date', 'after:departure_date'],
+            'bus_id' => ['sometimes', 'exists:buses,id'],
+            'route_id' => ['sometimes', 'exists:routes,id'],
         ];
     }
 }

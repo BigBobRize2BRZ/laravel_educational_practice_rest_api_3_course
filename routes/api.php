@@ -4,6 +4,7 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\BusController;
 use App\Http\Controllers\Api\RouteController;
 use App\Http\Controllers\Api\TripController;
+use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Models\Route as RouteModel;
@@ -57,4 +58,14 @@ Route::middleware(['throttle:api', 'check.token'])->group(function () {
     Route::post('trip', [TripController::class, 'store'])->middleware('role:dispatcher,admin');
     Route::put('trip', [TripController::class, 'update'])->middleware('role:dispatcher,admin');
     Route::delete('trip', [TripController::class, 'destroy'])->middleware('role:dispatcher,admin');
+
+
+    // Функции администратора
+    Route::prefix('user')->middleware('role:admin')->group(function () {
+        Route::get('/', [UserController::class, 'index']);
+        Route::post('/', [UserController::class, 'store']);
+        Route::put('/', [UserController::class, 'update']);
+        Route::delete('/', [UserController::class, 'destroy']);
+    });
+    Route::put('password', [UserController::class, 'changePassword'])->middleware('role:admin');
 });
