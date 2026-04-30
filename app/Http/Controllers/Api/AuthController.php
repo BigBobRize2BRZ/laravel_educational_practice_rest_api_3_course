@@ -9,6 +9,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Laravel\Sanctum\PersonalAccessToken;
 
 class AuthController extends Controller
 {
@@ -44,9 +45,12 @@ class AuthController extends Controller
             return response()->json(['message' => 'Not authenticated'], 401);
         }
 
-        $token = $user->currentAccessToken();
-        if ($token) {
-            $token->delete();
+        $tokenValue = $request->bearerToken();
+        if ($tokenValue) {
+            $token = PersonalAccessToken::findToken($tokenValue);
+            if ($token && $token->tokenable_id == $user->id) {
+                $token->delete();
+            }
         }
 
         return response()->json(['message' => 'Logged out successfully']);

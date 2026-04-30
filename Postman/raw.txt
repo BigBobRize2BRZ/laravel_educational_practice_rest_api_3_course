@@ -1,0 +1,117 @@
+{
+    // ======== Аутентификация и регистрация =========
+
+    // Регистрация (POST | http://localhost/api/register | Доступ: кто угодно)
+    // "name": "name0",
+    // "email": "email0@example.com",
+    // "status": "user",
+    // "password": "123456"
+
+    // Аутентификация администратора (POST | http://localhost/api/login | Доступ: кто угодно)
+    // "email": "admin@example.com",
+    // "password": "123456"
+
+    // Аутентификация диспечера (POST | http://localhost/api/login | Доступ: кто угодно)
+    // "email": "dispatcher@example.com",
+    // "password": "123456"
+
+    // Аутентификация пользователя (POST | http://localhost/api/login | Доступ: кто угодно)
+    // "email": "user@example.com",
+    // "password": "123456"
+
+    // Выход из аккаунта (POST | http://localhost/api/logout | Доступ: зарегестрированный)
+
+
+    // ======== Управление пользователями =========
+
+    //  Список всех пользователей (GET | http://localhost/api/user | Доступ: admin)
+
+    // Добавление пользователя (POST | http://localhost/api/user | Доступ: admin)
+    // "name": "name1",
+    // "email": "email1@example.com",
+    // "status": "user",
+    // "password": "123456"
+
+    // Изменение пользователя (PUT | http://localhost/api/user | Доступ: admin)
+    // "id": 10,
+    // "name": "name1",
+    // "email": "emailtest1@example.com",
+    // "status": "user",
+    // "password": "123456"
+
+    // Удаление пользователя (DELETE | http://localhost/api/user | Доступ: admin)
+    // "id": 19
+
+    //  Замена пароля (PUT | http://localhost/api/password | Доступ: admin)
+    // "user_id": 3,
+    // "password": "1234567"
+
+
+    // ======== Управление автобусами =========
+
+    // Список всех автобусов (GET | http://localhost/api/bus | Доступ: кто угодно)
+
+    // Вывод определённого автобуса (GET | http://localhost/api/bus/1 | Доступ: кто угодно)
+
+    // Добавление автобуса (POST | http://localhost/api/bus | Доступ: dispatcher/admin)
+    // "registration_number": "FR98456",
+    // "model": "КАМАЗ",
+    // "seats": 44
+
+    // Обновление автобуса (PUT | http://localhost/api/bus | Доступ: dispatcher/admin)
+    // "id": 10,
+    // "registration_number": "FR98489",
+    // "model": "КАМАЗ",
+    // "seats": 47
+
+    // Удаление автобуса (DELETE | http://localhost/api/bus | Доступ: dispatcher/admin)
+    // "id": 16
+    
+
+    // ======== Управление маршрутами =========
+
+    // Список всех маршрутов (GET | http://localhost/api/route | Доступ: кто угодно)
+
+    // Вывод определённого маршрута (GET | http://localhost/api/route/1 | Доступ: кто угодно)
+
+    // Добавление маршрута (POST | http://localhost/api/route | Доступ: dispatcher/admin)
+    // "number_route": 456,
+    // "start_stop": "Лебедёвка",
+    // "end_stop": "Воркута",
+    // "price": 5645
+
+    // Обновление маршрута (PUT | http://localhost/api/route | Доступ: dispatcher/admin)
+    // "id": 10,
+    // "number_route": 789,
+    // "start_stop": "Лебедёвка",
+    // "end_stop": "Воркута",
+    // "price": 5645
+
+    // Удаление маршрута (DELETE | http://localhost/api/route | Доступ: dispatcher/admin)
+    // "id": 21
+        
+
+    // ======== Управление рейсами =========
+
+    // Список всех рейсов (GET | http://localhost/api/trip | Доступ: dispatcher/admin)
+
+    // Вывод определённого рейса (GET | http://localhost/api/trip/1 | Доступ: dispatcher/admin)
+
+    // Добавление рейса (POST | http://localhost/api/trip | Доступ: dispatcher/admin)
+    // "number_trip": "BR5487",
+    // "departure_date": "2026-04-30 09:48:25",
+    // "arrival_date": "2026-04-30 10:21:25",
+    // "bus_id": 1,
+    // "route_id": 1
+
+    // Обновление рейса (PUT | http://localhost/api/trip | Доступ: dispatcher/admin)
+    // "id": 10,
+    // "number_trip": "BR9876",
+    // "departure_date": "2026-04-30 09:48:25",
+    // "arrival_date": "2026-04-30 10:21:25",
+    // "bus_id": 1,
+    // "route_id": 1
+
+    // Удаление рейса (DELETE | http://localhost/api/trip | Доступ: dispatcher/admin)
+    // "id": 51
+}

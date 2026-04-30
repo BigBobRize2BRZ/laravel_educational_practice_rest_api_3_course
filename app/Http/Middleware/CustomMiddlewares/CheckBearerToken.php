@@ -31,6 +31,8 @@ class CheckBearerToken
         auth()->setUser($user);
         $request->setUserResolver(fn() => $user);
 
+        $request->attributes->set('accessToken', $accessToken);
+
         return $next($request);
     }
 }
